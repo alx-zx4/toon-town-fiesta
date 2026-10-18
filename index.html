@@ -1092,6 +1092,18 @@ nav.scrolled .nav-links a:hover{color:var(--dark)}
 @media(max-width:768px){.testimonios-head{flex-direction:column;align-items:flex-start}}
 
 /* ══ POSTALES (carrusel de reseñas, estilo vintage) ══ */
+.reviews-notice{
+  margin:0 auto 34px;max-width:640px;text-align:center;
+  color:rgba(255,255,255,.9);font-size:15px;line-height:1.7;font-weight:500;
+}
+.reviews-notice strong{color:var(--white);font-weight:700}
+.postcard-empty{
+  flex:0 0 300px;min-height:210px;border-radius:20px;
+  background:rgba(255,255,255,.05);border:2.5px dashed rgba(255,255,255,.28);
+  display:flex;align-items:center;justify-content:center;
+}
+.postcard-empty svg{width:40px;height:40px;color:rgba(255,255,255,.3)}
+@media(max-width:640px){.postcard-empty{flex-basis:82vw}}
 .postcards-wrap{position:relative}
 .postcards-track{
   display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x proximity;
@@ -2171,15 +2183,16 @@ footer{background:var(--dark);position:relative;overflow:hidden;padding:0 0 24px
       </div>
     </div>
 
-    
+    <div class="reviews-notice" id="reviewsNotice">
+      Aquí podríamos poner algunas de sus reseñas.<br>
+      Mientras tanto, esta es nuestra <strong>calificación real en Google</strong>.
+    </div>
     <div class="postcards-wrap reveal reveal-delay-1">
       <div class="postcards-track" id="postcardsTrack">
-        <div class="postcard" style="--rot:-2deg;cursor:default">
-          <p class="postcard-quote">Todavía estamos juntando las reseñas con texto de nuestros papás para mostrarlas aquí. Por ahora, la calificación está en Google Maps.</p>
-        </div>
+        <div class="postcard-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="postcard-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="postcard-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
       </div>
-      <button class="postcard-nav postcard-prev" id="postcardPrev" aria-label="Reseña anterior" hidden></button>
-      <button class="postcard-nav postcard-next" id="postcardNext" aria-label="Siguiente reseña" hidden></button>
     </div>
   </div>
 </section>
