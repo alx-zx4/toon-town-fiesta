@@ -182,7 +182,6 @@ nav{
    con una línea gruesa de acento abajo, no un panel de vidrio esmerilado. */
 nav.scrolled{
   background:var(--dark);
-  box-shadow:0 3px 0 var(--accent);
 }
 nav.scrolled .nav-logo{color:var(--white)}
 nav.scrolled .nav-links a{color:rgba(255,253,247,.8)}
@@ -263,7 +262,7 @@ nav.scrolled .nav-links a:hover{color:var(--dark)}
    nada más lo justo para que el texto blanco siga legible. */
 .hero-scrim{
   position:absolute;inset:0;z-index:6;pointer-events:none;
-  background:
+  background:radial-gradient(58% 44% at 50% 40%,rgba(15,8,28,.46) 0%,rgba(15,8,28,.22) 55%,rgba(15,8,28,0) 100%),
     radial-gradient(95% 65% at 50% 38%,rgba(11,120,200,.06) 0%,rgba(11,120,200,.16) 60%,rgba(43,47,184,.34) 100%),
     linear-gradient(200deg,rgba(95,203,107,.30) 0%,rgba(95,203,107,0) 42%),
     linear-gradient(to bottom,rgba(43,47,184,.42) 0%,rgba(43,47,184,.06) 26%,rgba(43,47,184,.22) 58%,rgba(43,47,184,.80) 100%);
@@ -298,7 +297,7 @@ nav.scrolled .nav-links a:hover{color:var(--dark)}
 }
 .hero-subtitle{
   font-family:var(--font-serif);font-size:clamp(16px,2.4vw,22px);font-style:normal;font-weight:700;
-  color:var(--accent);margin-bottom:20px;letter-spacing:.02em;
+  color:var(--white);margin-bottom:20px;letter-spacing:.02em;
   text-shadow:0 2px 0 rgba(16,20,80,.55);
 }
 .hero-desc{
@@ -368,8 +367,10 @@ nav.scrolled .nav-links a:hover{color:var(--dark)}
 .belt-wrap{
   position:relative;z-index:6;overflow:hidden;
   height:clamp(56px,8vw,84px);
+  background:var(--dark);
 }
 .belt-svg{display:block;width:100%;height:100%}
+#hero .wave-divider{z-index:7}
 
 /* ══ NOSOTROS ══ */
 #nosotros{
@@ -914,7 +915,7 @@ nav.scrolled .nav-links a:hover{color:var(--dark)}
 .card-item[data-s="out-l"]{transform:translateX(-135%) rotate(-20deg) scale(.82);opacity:0;z-index:6;pointer-events:none}
 .card-item[data-s="out-r"]{transform:translateX(135%) rotate(20deg) scale(.82);opacity:0;z-index:6;pointer-events:none}
 .no-tr{transition:none!important}
-.card-label{font-family:var(--font-serif);font-style:normal;font-weight:700;font-size:13px;color:rgba(255,255,255,.45);letter-spacing:.03em}
+
 .card-pips{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:10;pointer-events:none}
 /* Pips de confetti: cada punto en un color distinto de la paleta */
 .cp{display:block;width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.45);transition:background .3s,width .3s,border-radius .3s}
@@ -1509,6 +1510,43 @@ footer{background:var(--dark);position:relative;overflow:hidden;padding:0 0 24px
    parpadeos ni parallax brusco, así que se deja siempre animada.
    NO reintroducir este media query. */
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+.jesus-note-wrap{display:flex;justify-content:center;padding:0 24px;margin:56px 0 8px;position:relative;z-index:6}
+.jesus-note{
+  max-width:460px;width:100%;
+  background:#FFFDF6;
+  border:1px solid rgba(13,59,71,.12);
+  border-radius:4px;
+  padding:22px 26px 20px;
+  transform:rotate(-1.4deg);
+  box-shadow:0 10px 24px rgba(13,59,71,.16), 0 2px 6px rgba(13,59,71,.10);
+  font-family:'Caveat','Quicksand',cursive;
+  color:#2b2017;
+  font-size:21px;
+  line-height:1.38;
+}
+.jesus-note p{margin:0}
+.jesus-note-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.jesus-note-foto{
+  width:88px;height:88px;border-radius:50%;object-fit:cover;
+  object-position:center 14%;
+  flex-shrink:0;display:block;
+  border:2px solid rgba(13,59,71,.18);
+}
+.jesus-note-nombre{font-weight:700;font-size:1.15em;color:var(--dark)}
+.jesus-note-firma{
+  display:block;margin-top:14px;height:30px;width:auto;max-width:150px;
+  filter:brightness(0) opacity(.82);
+}
+.jesus-note-tel{
+  display:block;margin-top:12px;font-family:'Quicksand','Caveat',sans-serif;
+  font-size:14.5px;font-weight:700;color:var(--dark);letter-spacing:.2px;
+}
+@media(max-width:600px){
+  .jesus-note{font-size:19px;padding:18px 20px 16px}
+  .jesus-note-foto{width:72px;height:72px}
+  .jesus-note-firma{height:26px}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 </head>
@@ -1788,12 +1826,7 @@ footer{background:var(--dark);position:relative;overflow:hidden;padding:0 0 24px
     <div class="precios-head reveal">
       
       <h2 class="section-title dark-txt vcr" data-vcr="Nuestros paquetes de fiesta"></h2>
-      
-      <span class="needs-data-banner">
-        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        No tenemos datos suficientes todavía, pero tranquil@ 🤝 esto lo trabajamos juntos.
-      </span>
-    </div>
+      </div>
 
     <div class="precios-grid">
       
@@ -1875,12 +1908,7 @@ footer{background:var(--dark);position:relative;overflow:hidden;padding:0 0 24px
     <div class="faq-head reveal">
       
       <h2 class="section-title dark-txt vcr" data-vcr="Las preguntas más frecuentes"></h2>
-      
-      <span class="needs-data-banner">
-        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        No tenemos datos suficientes todavía, pero tranquil@ 🤝 esto lo trabajamos juntos.
-      </span>
-    </div>
+      </div>
     <div class="faq-list">
       
       <div class="faq-chat-item">
@@ -1981,19 +2009,14 @@ footer{background:var(--dark);position:relative;overflow:hidden;padding:0 0 24px
       <div>
         <div class="card-carousel-wrap" id="cardCarousel">
           <div class="card-item" style="background-image:url('fotos/galeria-1.webp')">
-            <span class="card-label">Cumpleaños de Emma</span>
           </div>
           <div class="card-item" style="background-image:url('fotos/galeria-2.webp')">
-            <span class="card-label">Fiesta de superhéroes</span>
           </div>
           <div class="card-item" style="background-image:url('fotos/galeria-3.webp')">
-            <span class="card-label">Piñata y sorpresas</span>
           </div>
           <div class="card-item" style="background-image:url('fotos/galeria-4.webp')">
-            <span class="card-label">Mesa de dulces</span>
           </div>
           <div class="card-item" style="background-image:url('fotos/galeria-5.webp')">
-            <span class="card-label">Show de burbujas</span>
           </div>
           <div id="cardPips" class="card-pips"></div>
         </div>
@@ -2357,7 +2380,20 @@ Estamos en Av. 2 de Octubre, en Los Treviño, Santa Catarina. Abre el mapa para 
         <p class="form-hint" id="invHint">Escribe el nombre y elige un color, la invitación se arma sola.</p>
       </div>
     </div>
-  </div>
+    </div>
+
+    <div class="jesus-note-wrap">
+      <div class="jesus-note">
+        <div class="jesus-note-head">
+          <img class="jesus-note-foto" src="https://korvel.com.mx/img/founder-jesus.webp" alt="Jesús, de Korvel" width="64" height="64" loading="lazy">
+          <span class="jesus-note-nombre">Jesús, de Korvel</span>
+        </div>
+        <p>Hola, soy Jesus, de Korvel. Esta demo la arme con las fotos que tienen en google maps, asi que seguro me faltaron cosas, como sus paquetes o algunas respuestas de aqui abajo. Lo que tengan a la mano me lo mandan y se lo acomodo para dejarla a su medida.</p>
+        <span class="jesus-note-tel">Tel: 81 2933 5144</span>
+        <img class="jesus-note-firma" src="https://korvel.com.mx/img/firma-jesus.webp" alt="Firma de Jesús" width="150" height="56" loading="lazy">
+      </div>
+    </div>
+
   <svg class="wave-divider wave-to-dark" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,50 L1440,100 L0,100 Z"/></svg>
 </section>
 
@@ -2907,6 +2943,17 @@ function showTab(btn, id){
 /* ── FAQ estilo chat — acordeón de un solo abierto a la vez ──
    La animación de alto es puro CSS (grid-template-rows 0fr/1fr en
    .faq-chat-a-wrap), este JS solo pone/quita la clase .open. */
+/* -- CONTRASTE AUTOMATICO DE BOTONES (.btn-primary / .btn-secondary) -- */
+(function(){
+  function brillo(hex){ if(!hex) return null; hex=hex.trim(); if(hex[0]!=='#') return null; hex=hex.replace('#',''); if(hex.length===3) hex=hex.split('').map(function(c){return c+c;}).join(''); if(hex.length<6) return null; var r=parseInt(hex.substr(0,2),16),g=parseInt(hex.substr(2,2),16),b=parseInt(hex.substr(4,2),16); return (r*299+g*587+b*114)/1000; }
+  var css=getComputedStyle(document.documentElement); function v(n){return css.getPropertyValue(n).trim();}
+  var DARK=v('--dark')||'#5B2FA8', WHITE=v('--white')||'#FFFFFF';
+  function textoSeguro(bg){ var br=brillo(bg); if(br===null) return null; return br>150?DARK:WHITE; }
+  function aplicar(btn,bgVar,hoverVar){ var base=textoSeguro(v(bgVar)), hover=textoSeguro(v(hoverVar)); if(base) btn.style.color=base; if(hover){ btn.addEventListener('mouseenter',function(){btn.style.color=hover;}); btn.addEventListener('mouseleave',function(){if(base)btn.style.color=base;}); btn.addEventListener('focus',function(){btn.style.color=hover;}); btn.addEventListener('blur',function(){if(base)btn.style.color=base;}); } }
+  document.querySelectorAll('.btn-primary').forEach(function(btn){aplicar(btn,'--accent','--primary');});
+  document.querySelectorAll('.btn-secondary').forEach(function(btn){aplicar(btn,'--white','--accent2');});
+})();
+
 function toggleFaqChat(btn){
   var item = btn.closest('.faq-chat-item');
   var wasOpen = item.classList.contains('open');
